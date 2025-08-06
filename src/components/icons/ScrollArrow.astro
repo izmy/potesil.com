@@ -1,0 +1,61 @@
+---
+type Variant = "black" | "teal" | "green" | "orange" | "purple";
+
+const colorMap: Record<Variant, `#${string}`> = {
+  black: "#000000",
+  teal: "#3B777A",
+  green: "#50B62A",
+  orange: "#CF3E00",
+  purple: "#4A0E79",
+};
+
+type Page =
+  | "intro"
+  | "hobbies"
+  | "erem"
+  | "driving"
+  | "work"
+  | "blog"
+  | "contact";
+
+type PageAnchor = `#${Page}`;
+
+interface Props {
+  href: PageAnchor;
+  variant?: Variant;
+}
+
+const { href, variant = "black" } = Astro.props;
+
+const color = colorMap[variant as Variant];
+---
+
+<a class="scroll-btn" href={href} style={{ background: color }}>
+  <slot />
+  <svg
+    width="64"
+    height="65"
+    viewBox="0 0 64 65"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="64" height="64" transform="translate(0 0.5)" fill={color}
+    ></rect>
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M33.8579 11.3076H29.8579V45.8935L20.6863 36.7219L17.8579 39.5503L29.1716 50.864L32 53.6924L34.8285 50.864L46.1422 39.5503L43.3138 36.7219L33.8579 46.1777V11.3076Z"
+      fill="white"></path>
+  </svg>
+</a>
+
+<style lang="scss">
+  .scroll-btn {
+    cursor: pointer;
+    text-decoration: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>

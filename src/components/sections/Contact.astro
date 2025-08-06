@@ -1,0 +1,97 @@
+<section id="contact">
+  <div class="content">
+    <h1><span>Potěší mě</span> všechno, co v životě dává smysl.</h1>
+
+    <ul class="contact-list">
+      <li>
+        <span>e:</span>
+        <a href="mailto:tomas@potesil.com">tomas@potesil.com</a>
+      </li>
+      <li><span>t:</span> <a href="tel:+420607821747">607 821 747</a></li>
+      <li>
+        <ul class="socials">
+          <li>
+            <a href="https://instagram.com/jsempodes" target="_blank"
+              >instagram</a
+            >
+          </li>
+          <li>
+            <a href="https://x.com/tomaspotesil" target="_blank">x.com</a>
+          </li>
+        </ul>
+      </li>
+      <li><span>ič:</span> 76609120</li>
+    </ul>
+  </div>
+</section>
+
+<style lang="scss">
+  section {
+    display: flex;
+    height: 100vh;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100vh;
+    margin: auto;
+    position: relative;
+    max-width: 700px;
+  }
+
+  h1 {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 4rem;
+
+    span {
+      display: block;
+    }
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin: 0.5rem 0;
+    span {
+      font-weight: 500;
+      margin-right: 0.5rem;
+    }
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+
+  .socials {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      border: 1px solid #333;
+      padding: 0.5rem 1rem;
+      text-decoration: underline;
+      color: inherit;
+      font-size: 14px;
+      display: inline-block;
+
+      &:hover {
+        background: #f5f5f5;
+      }
+    }
+  }
+</style>

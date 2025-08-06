@@ -1,0 +1,30 @@
+---
+import Header from "../components/Header.astro";
+import Blog from "../components/sections/Blog.astro";
+import Contact from "../components/sections/Contact.astro";
+import Driving from "../components/sections/Driving.astro";
+import Erem from "../components/sections/Erem.astro";
+import Hobbies from "../components/sections/Hobbies.astro";
+import Intro from "../components/sections/Intro.astro";
+
+import Work from "../components/sections/Work.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <Header />
+  <main>
+    <Intro />
+    <Hobbies />
+    <Erem />
+    <Driving />
+    <Work />
+    <Blog />
+    <Contact />
+  </main>
+</Layout>
+
+<script>
+  import "../scripts/scroll.ts";
+  import "../scripts/animations.ts";
+</script>

@@ -1,0 +1,75 @@
+<div>
+  <nav>
+    <h1><a href="#intro">potesil.com</a></h1>
+
+    <ul>
+      <li><a href="#work">práce</a></li>
+      <li><a href="#blog">blog</a></li>
+      <li><a href="#contact">kontakt</a></li>
+    </ul>
+  </nav>
+</div>
+
+<style lang="scss">
+  div {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: uppercase;
+
+    a {
+      text-decoration: none;
+      color: black;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    font-weight: 400;
+
+    li {
+      margin-left: 1rem;
+    }
+
+    a {
+      color: black;
+
+      font-size: 15px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-decoration: underline;
+      text-decoration-style: solid;
+      text-decoration-offset: 0%;
+      text-decoration-thickness: 0%;
+      text-decoration-skip-ink: auto;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+</style>

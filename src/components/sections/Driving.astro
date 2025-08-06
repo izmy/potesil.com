@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import image from "../../assets/driving.jpg";
+import ScrollArrow from "../icons/ScrollArrow.astro";
+---
+
+<section id="driving">
+  <div class="content">
+    <div class="text">
+      <h1>
+        <span>Potěší,</span> když posádka přežije a Marty utrousí „Poděs vole dobrý“.
+      </h1>
+
+      <ScrollArrow href="#work" variant="orange" />
+    </div>
+
+    <div class="image">
+      <Image src={image} alt="Potěšil. My name. My mission." width={615} />
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .content {
+    display: flex;
+    height: 100vh;
+    margin: auto;
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  .text {
+    align-self: flex-start;
+  }
+
+  .image {
+    align-self: flex-end;
+  }
+
+  h1 {
+    font-family: Inter;
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 300;
+
+    background: linear-gradient(251.52deg, #000000 4%, #cf3e00 78%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    max-width: 750px;
+
+    span {
+      font-weight: 900;
+    }
+  }
+</style>

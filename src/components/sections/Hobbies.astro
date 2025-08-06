@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+import image from "../../assets/hobbies.jpeg";
+import ScrollArrow from "../icons/ScrollArrow.astro";
+---
+
+<section id="hobbies">
+  <div class="content">
+    <div>
+      <h1>
+        <span>Potěší,</span>
+        <ul>
+          <li>když běžím, když sednu na kolo a jedu. Daleko a dlouho.</li>
+          <li>
+            <a
+              href="https://www.strava.com/clubs/bezimjakopodes"
+              target="_blank">Strava. &#x2197;</a
+            >
+          </li>
+        </ul>
+      </h1>
+
+      <ScrollArrow href="#erem" variant="teal" />
+    </div>
+
+    <div class="image">
+      <Image src={image} alt="Potěšil. My name. My mission." width={440} />
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  h1 {
+    font-family: Inter;
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+
+    max-width: 480px;
+    margin-top: 0;
+
+    background: linear-gradient(321.09deg, #000000 11.84%, #3b777a 83.35%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      font-weight: 300;
+
+      text-decoration: none;
+      list-style: none;
+    }
+  }
+
+  a {
+    color: black;
+    background-color: yellow;
+    -webkit-text-fill-color: black;
+  }
+
+  .image {
+    margin-top: 200px;
+  }
+</style>

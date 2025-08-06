@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  image: ImageMetadata;
+  alt: string;
+  link: string;
+  authors?: string[];
+}
+
+const { image, alt, link, authors = [] } = Astro.props;
+---
+
+<div class="card">
+  <Image src={image} alt={alt} class="logo" />
+  <div class="content">
+    <a href={link} target="_blank" rel="noopener noreferrer"> link &#x2197; </a>
+    {
+      authors.length > 0 && (
+        <p>
+          w/{" "}
+          {authors.map((author, i) => (
+            <>
+              <span>{author}</span>
+              {i < authors.length - 1 ? " a " : ""}
+            </>
+          ))}
+        </p>
+      )
+    }
+  </div>
+</div>
+
+<style lang="scss">
+  .card {
+    background: #f5f5f5;
+  }
+
+  .logo {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .content {
+    margin-top: auto;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 1rem;
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: purple;
+    }
+
+    p {
+      margin: 0.3rem 0 0;
+      font-size: 0.8rem;
+    }
+  }
+</style>

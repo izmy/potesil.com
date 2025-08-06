@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import image from "../../assets/erem.png";
+import ScrollArrow from "../icons/ScrollArrow.astro";
+---
+
+<section id="erem">
+  <div class="content">
+    <div>
+      <h1>
+        <span>Potěší,</span>
+        když se na eremtour baví lidi a policajti na služebně nudí.
+      </h1>
+
+      <ScrollArrow href="#driving" variant="green" />
+    </div>
+
+    <div>
+      <Image src={image} alt="Potěšil. My name. My mission." width={640} />
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    position: relative;
+    max-width: 1200px;
+  }
+
+  h1 {
+    font-family: Inter;
+
+    font-weight: 300;
+    font-size: 3rem;
+    line-height: 1.1;
+    letter-spacing: 0;
+
+    background: linear-gradient(280.68deg, #000000 0.77%, #50b62a 93.5%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    span {
+      display: block;
+      font-weight: 900;
+    }
+  }
+</style>

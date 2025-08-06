@@ -1,0 +1,104 @@
+---
+import { Image } from "astro:assets";
+import image from "../../assets/intro.jpg";
+import ScrollArrow from "../icons/ScrollArrow.astro";
+---
+
+<section id="intro">
+  <div class="content">
+    <div class="text">
+      <h1>
+        <span>Potěšil.</span>
+        <ul>
+          <li>My name.</li>
+          <li>My mission.</li>
+        </ul>
+      </h1>
+
+      <ScrollArrow href="#hobbies" variant="black">
+        <div class="box">
+          Potěší,
+          <span>když...</span>
+        </div>
+      </ScrollArrow>
+    </div>
+
+    <div class="image">
+      <Image src={image} alt="Potěšil. My name. My mission." width={440} />
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    position: relative;
+    max-width: 900px;
+    max-height: 660px;
+  }
+
+  .text {
+    z-index: 2;
+    margin-right: -100px;
+  }
+
+  .image {
+    flex: 1;
+  }
+
+  h1 {
+    font-family: Inter;
+    font-weight: 900;
+    font-size: 4.5rem;
+    line-height: 100px;
+    letter-spacing: 0;
+    margin: 100px 0 137px;
+
+    span {
+      text-decoration: underline;
+      text-decoration-style: wavy;
+      text-decoration-thickness: 8%;
+      text-underline-offset: 10px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      font-weight: 300;
+      font-size: 4.5rem;
+      line-height: 100px;
+
+      text-decoration: none;
+      list-style: none;
+    }
+  }
+
+  .box {
+    width: 232px;
+    background: #000000;
+    color: white;
+
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 1.5rem;
+
+    line-height: 2rem;
+
+    padding: 20px;
+
+    span {
+      display: block;
+    }
+  }
+</style>

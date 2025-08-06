@@ -1,0 +1,102 @@
+---
+declare global {
+  interface Window {
+    dataLayer: Record<string, any>[];
+  }
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, viewport-fit=cover"
+    />
+
+    <meta name="description" content="Potěšil. My name. My mission." />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Tomáš Potěšil</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tomáš Potěšil" />
+    <meta property="og:description" content="Potěšil. My name. My mission." />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:url" content="https://tomaspotesil.cz/" />
+    <meta property="og:site_name" content="Tomáš Potěšil" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@izmy666" />
+    <meta name="twitter:title" content="Tomáš Potěšil" />
+    <meta name="twitter:description" content="Potěšil. My name. My mission." />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "email": "mailto:me@jaroslavhrach.cz",
+        "image": "/profile-photo.jpg",
+        "jobTitle": "Frontend Developer",
+        "name": "Jaroslav Hrách",
+        "gender": "Male",
+        "url": "https://jaroslavhrach.cz",
+        "sameAs": [
+          "https://www.linkedin.com/in/jaroslav-hrach",
+          "https://github.com/izmy",
+          "https://www.facebook.com/jaroslavhrach",
+          "https://www.instagram.com/izmy666",
+          "https://twitter.com/izmy666"
+        ]
+      }
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R17RPMJTV"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(..._args: unknown[]) {
+        window.dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-8R17RPMJTV");
+    </script> -->
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style lang="scss" is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-height: 100%;
+    font-family: "Inter", sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+    background-size: cover;
+    min-height: 100vh;
+  }
+</style>
