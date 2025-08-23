@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import image from "../../assets/erem.png";
 import ScrollArrow from "../ScrollArrow.astro";
+import LinkArrow from "../LinkArrow.astro";
 ---
 
 <section id="erem" aria-labelledby="erem-title">
@@ -18,7 +19,7 @@ import ScrollArrow from "../ScrollArrow.astro";
             aria-label="erem tour (otevře se v novém okně)"
             title="erem tour"
           >
-            eremtour&nbsp;&#x2197;</a
+            eremtour <LinkArrow /></a
           > baví a policajti na&nbsp;služebně nudí.</span
         >
       </h2>
@@ -35,8 +36,7 @@ import ScrollArrow from "../ScrollArrow.astro";
 </section>
 
 <style lang="scss">
-  @use "../../styles/variables.scss" as *;
-  @use "../../styles/typography.scss" as *;
+  @use "../../styles" as *;
 
   section {
     @include section-base();

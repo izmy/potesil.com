@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import image from "../../assets/hobbies.jpeg";
 import ScrollArrow from "../ScrollArrow.astro";
+import LinkArrow from "../LinkArrow.astro";
 ---
 
 <section id="hobbies" aria-labelledby="hobbies-title">
@@ -21,7 +22,7 @@ import ScrollArrow from "../ScrollArrow.astro";
             aria-label="Strava klub - Běžím jako poděs (otevře se v novém okně)"
             title="Strava klub - Běžím jako poděs"
           >
-            Strava.&nbsp;&#x2197;
+            Strava. <LinkArrow />
           </a>
         </span>
       </h2>
@@ -38,8 +39,7 @@ import ScrollArrow from "../ScrollArrow.astro";
 </section>
 
 <style lang="scss">
-  @use "../../styles/variables.scss" as *;
-  @use "../../styles/typography.scss" as *;
+  @use "../../styles" as *;
 
   section {
     @include section-base();
@@ -52,7 +52,6 @@ import ScrollArrow from "../ScrollArrow.astro";
   }
 
   .content {
-    flex: 1;
     display: flex;
     justify-content: center;
   }
@@ -98,6 +97,10 @@ import ScrollArrow from "../ScrollArrow.astro";
   @media (min-width: $breakpoint-md) {
     section {
       padding-inline: 2rem;
+    }
+
+    .content {
+      flex: 1;
     }
 
     .image {

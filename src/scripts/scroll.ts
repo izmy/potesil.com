@@ -1,38 +1,17 @@
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+document.addEventListener("click", (e: MouseEvent) => {
+  const target = e.target;
 
-gsap.registerPlugin(ScrollTrigger);
+  if (!(target instanceof Element)) return; // zúžení na Element
+  const link = target.closest<HTMLAnchorElement>(
+    'a[href^="#"]:not([href="#"])'
+  );
+  if (!link) return;
 
-window.addEventListener("load", () => {
-  if (location.hash) {
-    const target = document.querySelector(location.hash);
-    if (target) {
-      gsap.to(window, { duration: 0, scrollTo: { y: target } });
-    }
-  }
+  const hash = link.getAttribute("href")!;
+  const el = document.querySelector<HTMLElement>(hash);
+  if (!el) return;
 
-  document.querySelectorAll<HTMLElement>("section").forEach((section) => {
-    let initialized = false;
-
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top center",
-      onEnter: () => {
-        if (!initialized) {
-          initialized = true;
-          return;
-        }
-        history.replaceState(null, "", `#${section.id}`);
-      },
-      onEnterBack: () => {
-        if (!initialized) {
-          initialized = true;
-          return;
-        }
-        history.replaceState(null, "", `#${section.id}`);
-      },
-    });
-  });
-
-  ScrollTrigger.refresh();
+  e.preventDefault();
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+  history.replaceState(null, "", hash);
 });

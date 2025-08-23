@@ -1,0 +1,12 @@
+@mixin section-base {
+  height: 100vh;
+
+  position: relative;
+}
+
+@mixin scroll-position {
+  line-height: 0;
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+}

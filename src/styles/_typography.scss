@@ -1,7 +1,7 @@
 @use "./variables.scss" as *;
 
 @mixin heading-base {
-  font-family: Inter, sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 900;
   line-height: 1.5;
   text-wrap: balance;
@@ -10,7 +10,7 @@
 }
 
 @mixin heading-brand {
-  font-family: Inter, sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -55,9 +55,9 @@
 }
 
 @mixin heading-contact {
-  font-family: Inter, sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: clamp(2rem,min(15vw, 6vh), 6rem);
+  font-size: clamp(2rem,min(5vw,10vh),6rem);
   text-wrap: balance;
 
   .line {
@@ -72,11 +72,16 @@
 }
 
 @mixin loud-link($foreground: #000, $background: $yellow) {
+  white-space: nowrap;
   color: $foreground;
   background: $background;
   -webkit-text-fill-color: $foreground;
 
   text-decoration: none;
+
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.5rem;
 
   &:hover { 
     text-decoration: underline;
@@ -86,19 +91,4 @@
     outline: 2px solid currentColor;
     outline-offset: 2px;
   }
-}
-
-@mixin section-base {
-  height: 100dvh;
-  min-height: 100svh;
-  max-height: 100lvh;
-
-  position: relative;
-}
-
-@mixin scroll-position {
-  line-height: 0;
-  position: absolute;
-  left: 1rem;
-  bottom: 1rem;
 }
