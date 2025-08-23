@@ -1,40 +1,44 @@
-<div>
-  <nav>
-    <h1><a href="#intro">potesil.com</a></h1>
+<header>
+  <div class="container">
+    <p class="site-title">
+      <a href="#intro">potesil.com</a>
+    </p>
 
-    <ul>
-      <li><a href="#work">práce</a></li>
-      <li><a href="#blog">blog</a></li>
-      <li><a href="#contact">kontakt</a></li>
-    </ul>
-  </nav>
-</div>
+    <nav aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="#work">práce</a></li>
+        <li><a href="#blog">blog</a></li>
+        <li><a href="#contact">kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
 <style lang="scss">
-  div {
+  @use "../styles/variables.scss" as *;
+  @use "../styles/typography.scss" as *;
+
+  header {
     position: fixed;
     z-index: 1000;
     width: 100%;
+
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: saturate(160%) blur(6px);
   }
 
-  nav {
+  .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    justify-content: space-between;
 
-    font-family: Inter;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 100%;
-    letter-spacing: 0%;
+    margin-inline: auto;
+    padding: 1rem;
   }
 
-  h1 {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-    text-transform: uppercase;
+  .site-title {
+    @include heading-brand();
+    margin: 0;
 
     a {
       text-decoration: none;
@@ -47,25 +51,17 @@
   }
 
   ul {
-    display: flex;
-    list-style: none;
-    font-weight: 400;
+    display: inline-flex;
+    gap: 1rem;
 
-    li {
-      margin-left: 1rem;
-    }
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
     a {
       color: black;
-
-      font-size: 15px;
-      line-height: 100%;
-      letter-spacing: 0%;
+      font-weight: 400;
       text-decoration: underline;
-      text-decoration-style: solid;
-      text-decoration-offset: 0%;
-      text-decoration-thickness: 0%;
-      text-decoration-skip-ink: auto;
 
       &:hover {
         text-decoration: none;

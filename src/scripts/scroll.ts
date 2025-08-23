@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("load", () => {
-  // 1. pokud je hash → rovnou na něj skočíme
   if (location.hash) {
     const target = document.querySelector(location.hash);
     if (target) {
@@ -12,7 +11,6 @@ window.addEventListener("load", () => {
     }
   }
 
-  // 2. vytvoříme triggery s blokováním prvního volání
   document.querySelectorAll<HTMLElement>("section").forEach((section) => {
     let initialized = false;
 
@@ -21,14 +19,14 @@ window.addEventListener("load", () => {
       start: "top center",
       onEnter: () => {
         if (!initialized) {
-          initialized = true; // ignorujeme první enter
+          initialized = true;
           return;
         }
         history.replaceState(null, "", `#${section.id}`);
       },
       onEnterBack: () => {
         if (!initialized) {
-          initialized = true; // ignorujeme první enterBack
+          initialized = true;
           return;
         }
         history.replaceState(null, "", `#${section.id}`);

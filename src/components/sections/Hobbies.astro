@@ -1,84 +1,119 @@
 ---
 import { Image } from "astro:assets";
 import image from "../../assets/hobbies.jpeg";
-import ScrollArrow from "../icons/ScrollArrow.astro";
+import ScrollArrow from "../ScrollArrow.astro";
 ---
 
-<section id="hobbies">
+<section id="hobbies" aria-labelledby="hobbies-title">
   <div class="content">
-    <div>
-      <h1>
-        <span>Potěší,</span>
-        <ul>
-          <li>když běžím, když sednu na kolo a jedu. Daleko a dlouho.</li>
-          <li>
-            <a
-              href="https://www.strava.com/clubs/bezimjakopodes"
-              target="_blank">Strava. &#x2197;</a
-            >
-          </li>
-        </ul>
-      </h1>
+    <div class="content-inner">
+      <h2 id="hobbies-title">
+        Potěší,
+        <span class="line sub">
+          když běžím, když sednu na&nbsp;kolo a jedu. Daleko a dlouho.
+        </span>
+        <span class="line sub">
+          <a
+            class="strava-link"
+            href="https://www.strava.com/clubs/bezimjakopodes"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Strava klub - Běžím jako poděs (otevře se v novém okně)"
+            title="Strava klub - Běžím jako poděs"
+          >
+            Strava.&nbsp;&#x2197;
+          </a>
+        </span>
+      </h2>
 
-      <ScrollArrow href="#erem" variant="teal" />
+      <div class="scroll-arrow">
+        <ScrollArrow href="#erem" variant="teal" />
+      </div>
     </div>
+  </div>
 
-    <div class="image">
-      <Image src={image} alt="Potěšil. My name. My mission." width={440} />
-    </div>
+  <div class="image">
+    <Image src={image} alt="Poděs na kole" />
   </div>
 </section>
 
 <style lang="scss">
+  @use "../../styles/variables.scss" as *;
+  @use "../../styles/typography.scss" as *;
+
   section {
+    @include section-base();
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 100vh;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-left: 1rem;
   }
 
   .content {
+    flex: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    margin: auto;
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
+    justify-content: center;
   }
 
-  h1 {
-    font-family: Inter;
-    font-weight: 900;
-    font-size: 3rem;
-    line-height: 1.2;
-    letter-spacing: 0;
-
-    max-width: 480px;
-    margin-top: 0;
-
-    background: linear-gradient(321.09deg, #000000 11.84%, #3b777a 83.35%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    ul {
-      margin: 0;
-      padding: 0;
-      font-weight: 300;
-
-      text-decoration: none;
-      list-style: none;
-    }
+  .content-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
-  a {
-    color: black;
-    background-color: yellow;
-    -webkit-text-fill-color: black;
+  h2 {
+    @include heading-section();
+    @include gradient-heading($gradient-hobbies);
+
+    max-width: clamp(26rem, 40vw, 50rem);
   }
 
   .image {
-    margin-top: 200px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
+    padding-top: 10vh;
+    padding-bottom: 6vh;
+
+    img {
+      height: 100%;
+      max-width: 40vw;
+      object-fit: cover;
+      object-position: center center;
+    }
+  }
+
+  .strava-link {
+    @include loud-link();
+  }
+
+  .scroll-arrow {
+    @include scroll-position();
+  }
+
+  @media (min-width: $breakpoint-md) {
+    section {
+      padding-inline: 2rem;
+    }
+
+    .image {
+      padding-top: 20vh;
+      padding-bottom: 0;
+    }
+
+    .scroll-arrow {
+      position: relative;
+      inset: 0;
+    }
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    .content {
+      justify-content: flex-end;
+    }
   }
 </style>

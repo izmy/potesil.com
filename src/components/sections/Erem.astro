@@ -1,59 +1,139 @@
 ---
 import { Image } from "astro:assets";
 import image from "../../assets/erem.png";
-import ScrollArrow from "../icons/ScrollArrow.astro";
+import ScrollArrow from "../ScrollArrow.astro";
 ---
 
-<section id="erem">
+<section id="erem" aria-labelledby="erem-title">
   <div class="content">
-    <div>
-      <h1>
-        <span>Potěší,</span>
-        když se na eremtour baví lidi a policajti na služebně nudí.
-      </h1>
+    <div class="content-inner">
+      <h2 id="erem-title">
+        Potěší,
+        <span class="line sub">
+          když se lidi na&nbsp;<a
+            class="erem-link"
+            href="https://eremtour.cz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="erem tour (otevře se v novém okně)"
+            title="erem tour"
+          >
+            eremtour&nbsp;&#x2197;</a
+          > baví a policajti na&nbsp;služebně nudí.</span
+        >
+      </h2>
 
-      <ScrollArrow href="#driving" variant="green" />
+      <div class="scroll-arrow">
+        <ScrollArrow href="#driving" variant="green" />
+      </div>
     </div>
+  </div>
 
-    <div>
-      <Image src={image} alt="Potěšil. My name. My mission." width={640} />
-    </div>
+  <div class="image">
+    <Image src={image} alt="Poděs skáče do lidí" />
   </div>
 </section>
 
 <style lang="scss">
+  @use "../../styles/variables.scss" as *;
+  @use "../../styles/typography.scss" as *;
+
   section {
+    @include section-base();
+
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
+    gap: 1rem;
+
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
   }
 
   .content {
+    flex: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    margin: auto;
-    position: relative;
-    max-width: 1200px;
   }
 
-  h1 {
-    font-family: Inter;
+  .content-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
 
-    font-weight: 300;
-    font-size: 3rem;
-    line-height: 1.1;
-    letter-spacing: 0;
+    padding-top: 3rem;
+  }
 
-    background: linear-gradient(280.68deg, #000000 0.77%, #50b62a 93.5%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  h2 {
+    @include heading-section();
+    @include gradient-heading($gradient-erem);
 
-    span {
-      display: block;
-      font-weight: 900;
+    max-width: clamp(26rem, 40vw, 50rem);
+  }
+
+  .image {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    min-height: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 25% center;
+    }
+  }
+
+  .erem-link {
+    @include loud-link();
+  }
+
+  .scroll-arrow {
+    @include scroll-position();
+  }
+
+  @media (min-width: $breakpoint-md) {
+    section {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .content {
+      display: flex;
+      justify-content: center;
+    }
+
+    .content-inner {
+      padding-top: 0;
+    }
+
+    h2 {
+      max-width: clamp(26rem, 40vw, 50rem);
+    }
+
+    .image {
+      flex: 1;
+      height: 100%;
+      padding-block: 20vh;
+      width: auto;
+      max-height: none;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .scroll-arrow {
+      position: relative;
+      inset: 0;
+    }
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    .content {
+      justify-content: flex-end;
     }
   }
 </style>

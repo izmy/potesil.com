@@ -24,7 +24,15 @@ import Layout from "../layouts/Layout.astro";
   </main>
 </Layout>
 
+<style lang="scss">
+  main {
+    height: 100svh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+</style>
+
 <script>
   import "../scripts/scroll.ts";
-  import "../scripts/animations.ts";
 </script>

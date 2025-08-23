@@ -30,12 +30,17 @@ const { href, variant = "black" } = Astro.props;
 const color = colorMap[variant as Variant];
 ---
 
-<a class="scroll-btn" href={href} style={{ background: color }}>
+<a
+  class="scroll-btn"
+  href={href}
+  style={{ background: color }}
+  aria-label={`Skočit na sekci ${href}`}
+>
   <slot />
   <svg
     width="64"
-    height="65"
-    viewBox="0 0 64 65"
+    height="64"
+    viewBox="0 0 64 64"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >

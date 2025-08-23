@@ -12,12 +12,21 @@ const { image, alt, link, authors = [] } = Astro.props;
 ---
 
 <div class="card">
-  <Image src={image} alt={alt} class="logo" />
+  <Image src={image} alt={alt} loading="lazy" class="logo" />
   <div class="content">
-    <a href={link} target="_blank" rel="noopener noreferrer"> link &#x2197; </a>
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${alt} (otevře se v novém okně)`}
+      title={alt}
+    >
+      {alt}
+      <span aria-hidden="true">&#x2197;</span>
+    </a>
     {
       authors.length > 0 && (
-        <p>
+        <p class="authors">
           w/{" "}
           {authors.map((author, i) => (
             <>
@@ -37,26 +46,40 @@ const { image, alt, link, authors = [] } = Astro.props;
   }
 
   .logo {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     object-fit: contain;
   }
 
   .content {
     margin-top: auto;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem;
 
     a {
       font-weight: bold;
       text-decoration: none;
       color: purple;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     p {
       margin: 0.3rem 0 0;
       font-size: 0.8rem;
+    }
+  }
+
+  .authors {
+    display: none;
+  }
+
+  @media (min-height: 500px) and (min-width: 500px) {
+    .authors {
+      display: block;
     }
   }
 </style>

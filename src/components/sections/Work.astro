@@ -5,7 +5,7 @@ import logoErem from "../../assets/work/erem.png";
 import logoPacinekGlass from "../../assets/work/pacinek-glass.png";
 import logoTramontaKlima01 from "../../assets/work/tramonta-klima-01.png";
 import logoTramontaKlima02 from "../../assets/work/tramonta-klima-02.png";
-import ScrollArrow from "../icons/ScrollArrow.astro";
+import ScrollArrow from "../ScrollArrow.astro";
 import WorkCard from "../WorkCard.astro";
 
 const works = [
@@ -17,7 +17,7 @@ const works = [
   },
   {
     image: logoErem,
-    alt: "Erem",
+    alt: "erem",
     link: "https://eremvole.cz/",
     authors: ["Martin Novák", "Martin Ducháč"],
   },
@@ -32,25 +32,15 @@ const works = [
     alt: "Aimtec",
     link: "https://www.aimtecglobal.com/",
   },
-  {
-    image: logoTramontaKlima02,
-    alt: "Tramonta Klima",
-    link: "https://www.tramontaklima.cz/",
-  },
-  {
-    image: logoAimtec02,
-    alt: "Aimtec",
-    link: "https://www.aimtecglobal.com/",
-  },
 ];
 ---
 
-<section id="work">
+<section id="work" aria-labelledby="work-title">
   <div class="content">
-    <h1>
-      <span>Potěší,</span>
-      když dělám web, který má publikum a vizi.
-    </h1>
+    <h2 id="work-title">
+      Potěší,
+      <span class="line sub">když dělám web, který má publikum a vizi.</span>
+    </h2>
 
     <div class="grid">
       {
@@ -65,49 +55,86 @@ const works = [
       }
     </div>
 
-    <div>
+    <div class="scroll-arrow">
       <ScrollArrow href="#blog" variant="purple" />
     </div>
   </div>
 </section>
 
 <style lang="scss">
+  @use "../../styles/variables.scss" as *;
+  @use "../../styles/typography.scss" as *;
+
   section {
+    @include section-base();
+
     display: flex;
-    height: 100vh;
+    gap: 1rem;
+
+    justify-content: center;
+
+    padding-inline: 1rem;
   }
 
   .content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 
-    height: 100vh;
-    margin: auto;
-    position: relative;
-    max-width: 750px;
+    width: 100%;
+    padding-top: 3rem;
   }
 
-  h1 {
-    font-family: Inter;
-    font-weight: 300;
-    font-size: 3rem;
-    line-height: 1.2;
+  h2 {
+    @include heading-section();
+    @include gradient-heading($gradient-work);
 
-    background: linear-gradient(63.45deg, #000000 3.64%, #4a0e79 66.25%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    span {
-      display: block;
-      font-weight: 900;
-    }
+    margin-block: 1rem;
   }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    gap: 2rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, 100px);
+    gap: clamp(0.5rem, 2vw, 1rem);
+    justify-content: center;
+  }
+
+  .scroll-arrow {
+    @include scroll-position();
+  }
+
+  @media (min-width: $breakpoint-md) {
+    .content {
+      width: auto;
+      justify-content: center;
+      padding-top: 0;
+    }
+
+    h2 {
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      justify-content: start;
+    }
+
+    .scroll-arrow {
+      margin-top: 2rem;
+      position: relative;
+      inset: 0;
+    }
+  }
+
+  @media (min-height: 600px) and (min-width: $breakpoint-sm) {
+    .grid {
+      grid-template-columns: repeat(auto-fit, 150px);
+      justify-content: start;
+    }
+  }
+
+  @media (min-height: 900px) {
+    .grid {
+      grid-template-columns: repeat(4, clamp(150px, 15vh, 300px));
+    }
   }
 </style>

@@ -1,67 +1,105 @@
 ---
 import { Image } from "astro:assets";
 import image from "../../assets/driving.jpg";
-import ScrollArrow from "../icons/ScrollArrow.astro";
+import ScrollArrow from "../ScrollArrow.astro";
 ---
 
-<section id="driving">
+<section id="driving" aria-labelledby="driving-title">
   <div class="content">
-    <div class="text">
-      <h1>
-        <span>Potěší,</span> když posádka přežije a Marty utrousí „Poděs vole dobrý“.
-      </h1>
+    <div class="content-inner">
+      <h2 id="driving-title">
+        Potěší,
+        <span class="sub"
+          >když posádka přežije a Marty utrousí „Poděs vole dobrý“.</span
+        >
+      </h2>
 
-      <ScrollArrow href="#work" variant="orange" />
+      <div class="scroll-arrow">
+        <ScrollArrow href="#work" variant="orange" />
+      </div>
     </div>
-
-    <div class="image">
-      <Image src={image} alt="Potěšil. My name. My mission." width={615} />
-    </div>
+  </div>
+  <div class="image">
+    <Image src={image} alt="Poděs a Popstar" />
   </div>
 </section>
 
 <style lang="scss">
+  @use "../../styles/variables.scss" as *;
+  @use "../../styles/typography.scss" as *;
+
   section {
+    @include section-base();
+
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
+    flex-direction: column-reverse;
+    justify-content: center;
+
+    padding: 3rem 0 1rem 1rem;
   }
 
   .content {
-    display: flex;
-    height: 100vh;
-    margin: auto;
-    position: relative;
-    max-width: 1200px;
+    flex: 2 1 0;
+    height: 100%;
     width: 100%;
-    align-items: stretch;
+
+    display: flex;
     flex-direction: column-reverse;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
   }
 
-  .text {
-    align-self: flex-start;
+  .content-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 2rem;
   }
 
   .image {
-    align-self: flex-end;
+    flex: 1 1 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    min-height: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: right center;
+    }
   }
 
-  h1 {
-    font-family: Inter;
-    font-size: 3rem;
-    line-height: 1.2;
-    font-weight: 300;
+  h2 {
+    @include heading-section();
+    @include gradient-heading($gradient-driving);
+  }
 
-    background: linear-gradient(251.52deg, #000000 4%, #cf3e00 78%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .scroll-arrow {
+    @include scroll-position();
+  }
 
-    max-width: 750px;
+  @media (min-width: $breakpoint-md) {
+    .content {
+      flex: 1;
+    }
 
-    span {
-      font-weight: 900;
+    .content-inner {
+      max-width: 70vw;
+    }
+
+    .image {
+      flex: 1;
+      img {
+        width: 60%;
+        height: auto;
+      }
+    }
+
+    .scroll-arrow {
+      position: relative;
+      inset: 0;
     }
   }
 </style>

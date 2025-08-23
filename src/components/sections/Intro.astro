@@ -1,104 +1,164 @@
 ---
 import { Image } from "astro:assets";
-import image from "../../assets/intro.jpg";
-import ScrollArrow from "../icons/ScrollArrow.astro";
+import image from "../../assets/intro2.jpg";
+import ScrollArrow from "../ScrollArrow.astro";
 ---
 
-<section id="intro">
-  <div class="content">
-    <div class="text">
-      <h1>
-        <span>Potěšil.</span>
-        <ul>
-          <li>My name.</li>
-          <li>My mission.</li>
-        </ul>
-      </h1>
-
-      <ScrollArrow href="#hobbies" variant="black">
-        <div class="box">
-          Potěší,
-          <span>když...</span>
-        </div>
-      </ScrollArrow>
-    </div>
-
+<section id="intro" aria-labelledby="intro-title">
+  <div class="image-wrapper">
     <div class="image">
-      <Image src={image} alt="Potěšil. My name. My mission." width={440} />
+      <Image src={image} alt="Tomáš Potěšil" />
     </div>
+  </div>
+
+  <div class="content">
+    <h1 id="intro-title" class="hero-heading">
+      <span class="headline">Potěšil.</span>
+      <span class="line sub">My name.</span>
+      <span class="line sub">My mission.</span>
+    </h1>
+  </div>
+
+  <div class="scroll-arrow">
+    <ScrollArrow href="#hobbies" variant="black">
+      <div class="box">
+        Potěší,
+        <span>když...</span>
+      </div>
+    </ScrollArrow>
   </div>
 </section>
 
 <style lang="scss">
+  @use "../../styles/variables.scss" as *;
+  @use "../../styles/typography.scss" as *;
+
   section {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    @include section-base();
+  }
+
+  .image-wrapper {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+
+    .image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: right center;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        mix-blend-mode: multiply;
+        opacity: 0.5;
+
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 3s ease infinite;
+        will-change: background-position;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    }
   }
 
   .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    margin: auto;
-    position: relative;
-    max-width: 900px;
-    max-height: 660px;
+    position: absolute;
+    z-index: 10;
+    top: 10vh;
+    left: 10dvw;
   }
 
-  .text {
-    z-index: 2;
-    margin-right: -100px;
+  .hero-heading {
+    @include heading-hero();
   }
 
-  .image {
-    flex: 1;
-  }
-
-  h1 {
-    font-family: Inter;
-    font-weight: 900;
-    font-size: 4.5rem;
-    line-height: 100px;
-    letter-spacing: 0;
-    margin: 100px 0 137px;
-
-    span {
-      text-decoration: underline;
-      text-decoration-style: wavy;
-      text-decoration-thickness: 8%;
-      text-underline-offset: 10px;
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
-      font-weight: 300;
-      font-size: 4.5rem;
-      line-height: 100px;
-
-      text-decoration: none;
-      list-style: none;
-    }
+  .scroll-arrow {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
   }
 
   .box {
-    width: 232px;
-    background: #000000;
+    background: black;
     color: white;
-
-    font-family: Inter;
     font-weight: 700;
     font-size: 1.5rem;
-
     line-height: 2rem;
-
-    padding: 20px;
+    padding: 1.25rem;
 
     span {
       display: block;
+    }
+  }
+
+  @media (min-width: $breakpoint-md) {
+    .image-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+
+      padding-top: 100px;
+      padding-right: 0;
+      padding-left: 50vw;
+    }
+
+    .content {
+      top: auto;
+      left: 0;
+      display: flex;
+      justify-content: flex-end;
+      transform: translate(105px, 0);
+      width: 50vw;
+    }
+
+    .scroll-arrow {
+      width: 50vw;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .box {
+      width: 230px;
+    }
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    .image-wrapper {
+      padding-right: 5vw;
+    }
+  }
+
+  @media (max-height: 440px) {
+    .content {
+      display: block;
+      top: 3rem;
+      left: 1rem;
     }
   }
 </style>
