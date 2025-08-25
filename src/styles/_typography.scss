@@ -79,9 +79,11 @@
 
   text-decoration: none;
 
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 0.5rem;
+  i {
+    font-size: 0.5em;
+    padding-inline: 0.5rem;
+    vertical-align: super;
+  }
 
   &:hover { 
     text-decoration: underline;

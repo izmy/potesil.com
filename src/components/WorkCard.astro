@@ -22,7 +22,9 @@ const { image, alt, link, authors = [] } = Astro.props;
       title={alt}
     >
       {alt}
-      <span aria-hidden="true">&#x2197;</span>
+      <span aria-hidden="true"
+        ><i class="fa-sharp fa-regular fa-arrow-up-right-from-square"></i></span
+      >
     </a>
     {
       authors.length > 0 && (
@@ -61,6 +63,12 @@ const { image, alt, link, authors = [] } = Astro.props;
       font-weight: 700;
       text-decoration: none;
       color: purple;
+
+      i {
+        font-size: 0.8em;
+        vertical-align: middle;
+        padding-bottom: 0.2rem;
+      }
 
       &:hover {
         text-decoration: underline;
