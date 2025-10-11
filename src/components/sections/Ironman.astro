@@ -1,21 +1,23 @@
 ---
 import { Image } from "astro:assets";
-import image from "../../assets/driving.jpg";
+import image from "../../assets/ironman.jpg";
 import ScrollArrow from "../ScrollArrow.astro";
 ---
 
-<section id="driving" aria-labelledby="driving-title">
+<section id="ironman" aria-labelledby="ironman-title">
   <div class="content">
     <div class="content-inner">
-      <h2 id="driving-title">
-        Potěší,
+      <h2 id="ironman-title">
+        Potěší
         <span class="sub"
-          >když posádka přežije a Marty utrousí „Poděs vole dobrý“.</span
+          >IRONMAN za 5:31:21. A&nbsp;každá minuta, kterou příště stáhnu.</span
         >
+        <span class="line sub small">■ 1,9 km plavání ■ 90 km kolo ■ 21 km běh</span>
+        <span class="line sub small">Zvládnu dřív, než na Netflixu zkoukneš 3 filmy :)</span>
       </h2>
 
       <div class="scroll-arrow">
-        <ScrollArrow href="#work" variant="orange" />
+        <ScrollArrow href="#work" variant="red" />
       </div>
     </div>
   </div>
@@ -72,7 +74,7 @@ import ScrollArrow from "../ScrollArrow.astro";
 
   h2 {
     @include heading-section();
-    @include gradient-heading($gradient-driving);
+    @include gradient-heading($gradient-ironman);
   }
 
   .scroll-arrow {

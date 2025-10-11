@@ -1,11 +1,11 @@
 ---
-type Variant = "black" | "teal" | "green" | "orange" | "purple";
+type Variant = "black" | "teal" | "green" | "red" | "purple";
 
 const colorMap: Record<Variant, `#${string}`> = {
   black: "#000000",
   teal: "#3B777A",
   green: "#50B62A",
-  orange: "#CF3E00",
+  red: "#d33329",
   purple: "#4A0E79",
 };
 
@@ -13,7 +13,7 @@ type Page =
   | "intro"
   | "hobbies"
   | "erem"
-  | "driving"
+  | "ironman"
   | "work"
   | "blog"
   | "contact";

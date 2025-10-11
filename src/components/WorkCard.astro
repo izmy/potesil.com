@@ -59,16 +59,15 @@ const { image, alt, link, authors = [] } = Astro.props;
     text-align: center;
     padding: 0.5rem;
 
+    i {
+        font-size: 0.6em;
+        vertical-align: top;
+      }
+
     a {
       font-weight: 700;
       text-decoration: none;
       color: purple;
-
-      i {
-        font-size: 0.8em;
-        vertical-align: middle;
-        padding-bottom: 0.2rem;
-      }
 
       &:hover {
         text-decoration: underline;
