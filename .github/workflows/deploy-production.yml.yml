@@ -1,0 +1,38 @@
+name: 🚀 Deploy website to production (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dangerous_clean_slate:
+        description: "Smazat na cíli soubory, které nejsou v dist? (true/false)"
+        type: boolean
+        required: false
+        default: false
+
+run-name: "Manual production deploy"
+
+jobs:
+  deploy-production:
+    name: 🚀 Deploy (production)
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://potesil.com/
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm run build -- --base /
+
+      - name: 📂 Sync files to PRODUCTION
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: replikant2640.thinline.cz
+          username: ${{ secrets.FTP_USERNAME_PROD }}
+          password: ${{ secrets.FTP_PASSWORD_PROD }}
+          local-dir: ./dist/
+          server-dir: /potesil.com/
+          dangerous-clean-slate: ${{ inputs.dangerous_clean_slate }}
