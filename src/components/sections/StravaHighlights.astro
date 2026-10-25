@@ -156,6 +156,8 @@ const splitTitle = (title: string) => {
   section {
     // Na mobilu má fotka v Hobbies pod sebou ještě 6vh, proto stačí menší mezera.
     padding: 3rem 1rem 1rem;
+    // Po kliknutí na šipku by nadpis zajel pod pevnou hlavičku.
+    scroll-margin-top: 3.5rem;
   }
 
   h2 {
@@ -295,6 +297,7 @@ const splitTitle = (title: string) => {
 
       padding-top: 7rem;
       padding-bottom: 2rem;
+      scroll-margin-top: 0;
       padding-left: calc(2rem + (var(--half) - var(--heading)) / 2);
       padding-right: calc(2rem + (var(--half) - var(--photo)) / 2);
     }
