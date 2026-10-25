@@ -132,7 +132,8 @@ const splitTitle = (title: string) => {
               <p class="title">
                 <span>{head}<span class="nowrap">{last}<i class="fa-sharp fa-regular fa-arrow-up-right-from-square" aria-hidden="true"></i></span></span>
               </p>
-              <p class="meta">{meta.join(" · ")}</p>
+              {/* nezlomitelné mezery uvnitř údajů, zalamovat se smí jen mezi nimi */}
+              <p class="meta">{meta.map((m) => String(m).replaceAll(" ", "\u00a0")).join(" · ")}</p>
               <p class="quote">„{h.quote}“</p>
             </a>
           </li>
@@ -153,7 +154,8 @@ const splitTitle = (title: string) => {
   $muted: #6b6b6b;
 
   section {
-    padding: 7rem 1rem 1rem;
+    // Na mobilu má fotka v Hobbies pod sebou ještě 6vh, proto stačí menší mezera.
+    padding: 3rem 1rem 1rem;
   }
 
   h2 {
