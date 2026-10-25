@@ -83,7 +83,12 @@ const splitTitle = (title: string) => {
 };
 ---
 
-<section id="strava-highlights" aria-label="Nejdelší běhy a vyjížďky">
+<section id="strava-highlights" aria-labelledby="strava-highlights-title">
+  <h2 id="strava-highlights-title">
+    Když daleko a&nbsp;dlouho,
+    <span class="sub">tak daleko a&nbsp;dlouho…</span>
+  </h2>
+
   <ol class="tiles">
     {
       highlights.map((h) => {
@@ -149,6 +154,16 @@ const splitTitle = (title: string) => {
 
   section {
     padding: 7rem 1rem 1rem;
+  }
+
+  h2 {
+    @include heading-section();
+    @include gradient-heading($gradient-hobbies);
+
+    // Menší než hlavní nadpisy sekcí, patří jen k dlaždicím pod ním.
+    font-size: clamp(1.25rem, 2.4vw, 2.75rem);
+    width: fit-content; // přechod jen přes text, ne přes celou šířku
+    margin-bottom: 2rem;
   }
 
   .tiles {
