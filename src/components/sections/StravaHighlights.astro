@@ -1,4 +1,6 @@
 ---
+import ScrollArrow from "../ScrollArrow.astro";
+
 // Ručně vybrané aktivity ze Stravy. Pořadí v poli = pořadí na webu.
 // `id` je číslo z adresy aktivity: https://www.strava.com/activities/<id>
 const highlights: {
@@ -133,6 +135,10 @@ const splitTitle = (title: string) => {
       })
     }
   </ol>
+
+  <div class="scroll-arrow">
+    <ScrollArrow href="#erem" variant="teal" />
+  </div>
 </section>
 
 <style lang="scss">
@@ -142,7 +148,7 @@ const splitTitle = (title: string) => {
   $muted: #6b6b6b;
 
   section {
-    padding: 2rem 1rem 3rem;
+    padding: 7rem 1rem 1rem;
   }
 
   .tiles {
@@ -255,9 +261,25 @@ const splitTitle = (title: string) => {
     line-height: 1.5;
   }
 
+  .scroll-arrow {
+    margin-top: 3rem;
+    line-height: 0;
+  }
+
   @media (min-width: $breakpoint-md) {
+    // Okraje navazují na sekci Hobbies: vlevo na začátek nadpisu, vpravo na
+    // pravou hranu fotky. Obojí je tam vycentrované ve dvou polovinách, takže
+    // se počítá ze stejných rozměrů (padding 2rem, mezera 1rem, max. šířka
+    // nadpisu, fotka široká 40vw, nejvýš přes celou polovinu).
     section {
-      padding: 3rem 2rem 5rem;
+      --half: calc((100% - 5rem) / 2);
+      --heading: min(clamp(26rem, 40vw, 50rem), var(--half));
+      --photo: min(40vw, var(--half));
+
+      padding-top: 7rem;
+      padding-bottom: 2rem;
+      padding-left: calc(2rem + (var(--half) - var(--heading)) / 2);
+      padding-right: calc(2rem + (var(--half) - var(--photo)) / 2);
     }
 
     .km {
@@ -286,9 +308,9 @@ const splitTitle = (title: string) => {
   }
 
   @media (min-width: $breakpoint-xl) {
+    // Hobbies tu nadpis zarovnává doprava ve své polovině.
     section {
-      max-width: $container-max;
-      margin-inline: auto;
+      padding-left: calc(2rem + var(--half) - var(--heading));
     }
   }
 </style>
